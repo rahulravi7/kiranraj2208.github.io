@@ -3,6 +3,13 @@ document.addEventListener("DOMContentLoaded", function(){
     var result = document.getElementById("result");
     var btn1 = document.getElementById("btn1");
     var btn2 = document.getElementById("btn2");
+    var diff;
+    if(typeof(Storage) != undefined){
+        let val = localStorage.getItem("diff");
+        if(val != undefined){
+            document.getElementById('d'+val).checked = true;
+        }
+    }
     var players = 0;
     btn1.addEventListener('click', function(){
         players = 1;
@@ -10,6 +17,13 @@ document.addEventListener("DOMContentLoaded", function(){
         btn2.disabled = true;
         let pl = document.getElementById("players");
         pl.innerHTML = "1 Player (vs Computer)";
+        document.getElementById("d1").disabled = true;
+        document.getElementById("d2").disabled = true;
+        document.getElementById("d3").disabled = true;
+        if(document.getElementById("d1").checked) diff = "1";
+    else if(document.getElementById("d2").checked) diff = "2";
+    else if(document.getElementById("d3").checked) diff = "3";
+        localStorage.setItem("diff", diff);
         addListeners();
     })
     btn2.addEventListener('click', function(){
@@ -18,6 +32,13 @@ document.addEventListener("DOMContentLoaded", function(){
         btn2.disabled = true;
         let pl = document.getElementById("players");
         pl.innerHTML = "2 Players";
+        document.getElementById("d1").disabled = true;
+        document.getElementById("d2").disabled = true;
+        document.getElementById("d3").disabled = true;
+        if(document.getElementById("d1").checked) diff = "1";
+    else if(document.getElementById("d2").checked) diff = "2";
+    else if(document.getElementById("d3").checked) diff = "3";
+    localStorage.setItem("diff", diff);
         addListeners();
     });
     var won = 0;
@@ -104,7 +125,17 @@ document.addEventListener("DOMContentLoaded", function(){
         for(let i = 1; i < 10; i++) {
             if(ticked[i] == 1) ones += 1;
         }
-        
+        if(diff == "1"){
+            var emp = [];
+            for(let i = 1; i < 10; i++){
+                if(ticked[i] == 0) emp.push(i);
+            }
+            let min = 0, max = emp.length;
+                let index = Math.floor(Math.random() * (+max - +0)) ;
+                if(max > 0)
+                toTick = emp[index];
+        }
+        else if(diff == "2" || diff == "3"){
         //----------------
          if(ticked[1] == 2 && ticked[2] == 2 && ticked[3] == 0) toTick = 3;
         else if(ticked[2] == 2 && ticked[3] == 2 && ticked[1] == 0) toTick = 1;
@@ -155,10 +186,10 @@ document.addEventListener("DOMContentLoaded", function(){
         else if(ticked[3] == 1 && ticked[5] == 1 && ticked[7] == 0) toTick = 7;
         else if(ticked[3] == 1 && ticked[7] == 1 && ticked[5] == 0) toTick = 5;
         else if(ticked[7] == 1 && ticked[5] == 1 && ticked[3] == 0) toTick = 3;
-        else if(ticked[5] == 0){
+        else if(diff == "3" && ticked[5] == 0){
             toTick = 5;
         }
-        else if(ones == 2){
+        else if(diff == "3" && ones == 2){
             if(ticked[2] == 1 && ticked[4] == 1 && ticked[1] == 0) toTick = 1;
             else if(ticked[2] == 1 && ticked[6] == 1 && ticked[3] == 0) toTick = 3;
             else if(ticked[4] == 1 && ticked[8] == 1 && ticked[7] == 0) toTick = 7
@@ -167,9 +198,11 @@ document.addEventListener("DOMContentLoaded", function(){
         else{
             let skip = 0;
             let mis = [];
+            if(diff == "3"){
             if((ticked[1] == 1 && ticked[9] == 1) ||
                 (ticked[3] == 1 && ticked[7] == 1))
                 skip = 1;
+            }
             if(ticked[1] == 0) mis.push(1);
             if(ticked[3] == 0) mis.push(3);
             if(ticked[5] == 0) mis.push(5);
@@ -193,6 +226,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 if(mis.length != 0)
                     toTick = mis[index];
         }
+    }
         if(toTick == 0)
         for(let i = 1; i < 10; i++){
             if(ticked[i] == 0)
