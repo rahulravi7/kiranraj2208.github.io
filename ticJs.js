@@ -100,6 +100,10 @@ document.addEventListener("DOMContentLoaded", function(){
 }
     function autoPlay(){
         var toTick = 0;
+        var ones = 0;
+        for(let i = 1; i < 10; i++) {
+            if(ticked[i] == 1) ones += 1;
+        }
         
         //----------------
          if(ticked[1] == 2 && ticked[2] == 2 && ticked[3] == 0) toTick = 3;
@@ -154,6 +158,12 @@ document.addEventListener("DOMContentLoaded", function(){
         else if(ticked[5] == 0){
             toTick = 5;
         }
+        else if(ones == 2){
+            if(ticked[2] == 1 && ticked[4] == 1 && ticked[1] == 0) toTick = 1;
+            else if(ticked[2] == 1 && ticked[6] == 1 && ticked[3] == 0) toTick = 3;
+            else if(ticked[4] == 1 && ticked[8] == 1 && ticked[7] == 0) toTick = 7
+            else if(ticked[8] == 1 && ticked[6] == 1 && ticked[9] == 0) toTick = 9;
+        }
         else{
             let skip = 0;
             let mis = [];
@@ -191,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 break;
             }
         }
-
+        
 
         ticked[toTick] = 2;
         console.log(toTick)
