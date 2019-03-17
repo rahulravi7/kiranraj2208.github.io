@@ -44,3 +44,9 @@
 .div7, .div8, .div9{
     border-bottom: none;
 }
+
+@media only screen and(max-width:600px){
+    body{
+        background-color: lightblue;
+    }
+}
