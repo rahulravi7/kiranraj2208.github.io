@@ -194,6 +194,16 @@ document.addEventListener("DOMContentLoaded", function(){
             else if(ticked[2] == 1 && ticked[6] == 1 && ticked[3] == 0) toTick = 3;
             else if(ticked[4] == 1 && ticked[8] == 1 && ticked[7] == 0) toTick = 7
             else if(ticked[8] == 1 && ticked[6] == 1 && ticked[9] == 0) toTick = 9;
+            //---------------
+            //----------------
+            else if(ticked[5] == 1 && ticked[1] == 1 && ticked[3] == 0 && ticked[9] == 2) toTick = 3;
+            else if(ticked[5] == 1 && ticked[1] == 1 && ticked[7] == 0 && ticked[9] == 2) toTick = 7;
+            else if(ticked[5] == 1 && ticked[3] == 1 && ticked[1] == 0 && ticked[7] == 2) toTick = 1;
+            else if(ticked[5] == 1 && ticked[3] == 1 && ticked[9] == 0 && ticked[7] == 2) toTick = 9;
+            else if(ticked[7] == 1 && ticked[5] == 1 && ticked[1] == 0 && ticked[3] == 2) toTick = 1;
+            else if(ticked[7] == 1 && ticked[5] == 1 && ticked[9] == 0 && ticked[3] == 2) toTick = 9;
+            else if(ticked[5] == 1 && ticked[9] == 1 && ticked[3] == 0 && ticked[1] == 2) toTick = 3;
+            else if(ticked[5] == 1 && ticked[9] == 1 && ticked[7] == 0 && ticked[1] == 2) toTick = 7;
         }
         else{
             let skip = 0;
