@@ -153,6 +153,11 @@ document.addEventListener("DOMContentLoaded", function(){
             toTick = 5;
         }
         else{
+            let skip = 0;
+            let mis = [];
+            if((ticked[1] == 1 && ticked[9] == 1) ||
+                (ticked[3] == 1 && ticked[7] == 1))
+                skip = 1;
             let mis = [];
             if(ticked[1] == 0) mis.push(1);
             if(ticked[3] == 0) mis.push(3);
@@ -162,7 +167,7 @@ document.addEventListener("DOMContentLoaded", function(){
             let min = 0, max = mis.length;
                 let index = Math.floor(Math.random() * (+max - +0)) ;
                 console.log("index:" + index);
-                    if(mis.length != 0)
+                    if(mis.length != 0 && skip == 0)
                     toTick = mis[index];
         }
         if(toTick == 0){
