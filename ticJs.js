@@ -158,7 +158,6 @@ document.addEventListener("DOMContentLoaded", function(){
             if((ticked[1] == 1 && ticked[9] == 1) ||
                 (ticked[3] == 1 && ticked[7] == 1))
                 skip = 1;
-            let mis = [];
             if(ticked[1] == 0) mis.push(1);
             if(ticked[3] == 0) mis.push(3);
             if(ticked[5] == 0) mis.push(5);
