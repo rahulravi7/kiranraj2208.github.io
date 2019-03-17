@@ -149,6 +149,9 @@ document.addEventListener("DOMContentLoaded", function(){
         else if(ticked[3] == 1 && ticked[5] == 1 && ticked[7] == 0) toTick = 7;
         else if(ticked[3] == 1 && ticked[7] == 1 && ticked[5] == 0) toTick = 5;
         else if(ticked[7] == 1 && ticked[4] == 1 && ticked[3] == 0) toTick = 3;
+        else if(ticked[5] == 0){
+            toTick = 5;
+        }
         else{
             let mis = [];
             if(ticked[1] == 0) mis.push(1);
