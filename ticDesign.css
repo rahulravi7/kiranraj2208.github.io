@@ -28,8 +28,8 @@
     font-size: 600%;
     /* margin: 5px; */
     /* border-radius: 50px; */
- }
-/*.backColor{
+}
+/* .backColor{
     background-color: yellow;
 } */
 .div1, .div2, .div3{
@@ -45,3 +45,27 @@
     border-bottom: none;
 }
 
+.side{
+    position: absolute;
+    margin-top: -32%;
+    margin-left: 2%;
+    float: left;
+    padding: 0.5%;
+    border: 0.5px solid black;
+}
+/* Smartphones (landscape) ----------- */
+/* @media only screen 
+and (min-width : 321px) {
+
+body{
+    background-color: blue;
+} 
+}*/
+
+/* Smartphones (portrait) ----------- */
+/*@media only screen 
+and (max-width : 320px) {
+body{
+    background-color: blue;
+}
+}*/
