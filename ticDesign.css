@@ -2,6 +2,7 @@
     margin-top: 2%;
     margin-left: 32%;
     text-align: center;
+    font-size: 2vw;
     width: 30%;
 }
 .major{
@@ -47,8 +48,8 @@
 
 .side{
     position: absolute;
-    margin-top: -32%;
-    margin-left: 2%;
+    /* margin-top: -32%;
+    margin-left: 2%; */
     float: left;
     padding: 0.5%;
     border: 0.5px solid black;
