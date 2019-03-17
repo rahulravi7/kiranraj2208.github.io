@@ -1,0 +1,41 @@
+.head{
+    margin: 26px 520px;
+}
+.major{
+    margin:60px 440px;
+}
+.lead{
+    display: flex;
+}
+.button{
+    margin: 24px 540px;
+}
+.players{
+    margin: 23px 550px;
+}
+.backColor{
+    width:120px;
+    height:120px;
+    border: 1px solid black;
+    padding: 10px;
+    text-align: center;
+    font-size: 7em;
+    /* margin: 5px; */
+    /* border-radius: 50px; */
+}
+.backColor{
+    background-color: yellow;
+}
+
+.div1, .div2, .div3{
+    border-top: none;
+}
+.div1, .div4, .div7{
+    border-left: none
+}
+.div3, .div6, .div9{
+    border-right: none;
+}
+.div7, .div8, .div9{
+    border-bottom: none;
+}
