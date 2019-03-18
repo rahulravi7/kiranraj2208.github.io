@@ -17,6 +17,12 @@ document.addEventListener("DOMContentLoaded", function(){
             console.log(val1);
         }
     }
+    for(let i = 1; i < 4; i++){
+        document.getElementById('d'+i).addEventListener('change', function(){
+            document.getElementById('d'+i).checked = true;
+            localStorage.setItem("diff", i);
+        })
+    }
     function btn1Event(){
         players = 1;
         let pl = document.getElementById("players");
