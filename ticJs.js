@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function(){
+    "use strict"
     var ticked = new Array(10);
     var result = document.getElementById("result");
     var btn1 = document.getElementById("btn1");
