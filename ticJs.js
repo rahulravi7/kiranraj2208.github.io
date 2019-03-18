@@ -3,52 +3,71 @@ document.addEventListener("DOMContentLoaded", function(){
     var result = document.getElementById("result");
     var btn1 = document.getElementById("btn1");
     var btn2 = document.getElementById("btn2");
+    var play;
     var diff;
+    var disabling = 0;
     if(typeof(Storage) != undefined){
         let val = localStorage.getItem("diff");
+        let val1 = localStorage.getItem("players");
         if(val != undefined){
             document.getElementById('d'+val).checked = true;
         }
+        if(val1 != undefined){
+            document.getElementById(val1).checked = true;
+            console.log(val1);
+        }
     }
-    var players = 0;
-    btn1.addEventListener('click', function(){
+    function btn1Event(){
         players = 1;
-        btn1.disabled = true;
-        btn2.disabled = true;
         let pl = document.getElementById("players");
         pl.innerHTML = "1 Player (vs Computer)";
-        document.getElementById("d1").disabled = true;
-        document.getElementById("d2").disabled = true;
-        document.getElementById("d3").disabled = true;
         if(document.getElementById("d1").checked) diff = "1";
     else if(document.getElementById("d2").checked) diff = "2";
     else if(document.getElementById("d3").checked) diff = "3";
         localStorage.setItem("diff", diff);
+        localStorage.setItem("players", "btn1");
         addListeners();
-    })
-    btn2.addEventListener('click', function(){
+    }
+    function btn2Event(){
         players = 2;
-        btn1.disabled = true;
-        btn2.disabled = true;
         let pl = document.getElementById("players");
         pl.innerHTML = "2 Players";
-        document.getElementById("d1").disabled = true;
-        document.getElementById("d2").disabled = true;
-        document.getElementById("d3").disabled = true;
         if(document.getElementById("d1").checked) diff = "1";
     else if(document.getElementById("d2").checked) diff = "2";
     else if(document.getElementById("d3").checked) diff = "3";
     localStorage.setItem("diff", diff);
+    localStorage.setItem("players", "btn2");
         addListeners();
+    }
+    var players = 0;
+    if(btn1.checked == true) btn1Event();
+    else if(btn2.checked == true) btn2Event();
+    btn1.addEventListener('change', function(){
+        btn1Event();
+    });
+    btn2.addEventListener('change', function(){
+        btn2Event();
     });
     var won = 0;
     for(let i = 0; i < 10; i++)
     ticked[i] = 0;
     var str = "O";
+    function disable(){
+        document.getElementById("d1").disabled = true;
+        document.getElementById("d2").disabled = true;
+        document.getElementById("d3").disabled = true;
+        btn1.disabled = true;
+        btn2.disabled = true;
+    }
     function addListeners(){
+        console.log(localStorage.getItem("players"));
     for(let i = 1; i < 10; i++){
         document.getElementById('div' + i).addEventListener('click', function(){   
             if(ticked[i] == 0 && won == 0){
+                if(disabling == 0){
+                    disable();
+                    disabling = 1;
+                }
                     document.getElementById("div"+i).innerHTML = str;
                     if(str == "O"){
                         ticked[i] = 1;
@@ -194,7 +213,6 @@ document.addEventListener("DOMContentLoaded", function(){
             else if(ticked[2] == 1 && ticked[6] == 1 && ticked[3] == 0) toTick = 3;
             else if(ticked[4] == 1 && ticked[8] == 1 && ticked[7] == 0) toTick = 7
             else if(ticked[8] == 1 && ticked[6] == 1 && ticked[9] == 0) toTick = 9;
-            //---------------
             //----------------
             else if(ticked[5] == 1 && ticked[1] == 1 && ticked[3] == 0 && ticked[9] == 2) toTick = 3;
             else if(ticked[5] == 1 && ticked[1] == 1 && ticked[7] == 0 && ticked[9] == 2) toTick = 7;
