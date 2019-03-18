@@ -3,25 +3,29 @@ body{
 }
 .head{
     margin-top: 2%;
-    margin-left: 32%;
+    margin-left: 35%;
     text-align: center;
     font-size: 4vw;
     width: 30%;
 }
 .major{
     margin-top:2%;
-    margin-left: 32%;
+    margin-left: 35%;
 }
 .lead{
     display: flex;
 }
 .button{
-    margin-top: 2%;
-    margin-left: 41%;
+    border: 1px dotted black;
+    width:100%;
+    /* margin-top: 2%;
+    margin-left: 41%; */
 }
 .players{
     margin-top: 2%;
-    margin-left: 42%;
+    /* margin-left: 40%; */
+    text-align: center;
+    font-size: 2vw;
 }
 .backColor{
     width:15%;
